@@ -1,0 +1,165 @@
+/* ── Root ─────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--fixed-100);
+  min-width: 240px;
+  font-family: var(--font-family-body);
+}
+
+/* ── Wrapper — single outlined box ───────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  background: var(--colour-background-subtle-neutral-1);
+  border: 1px solid var(--colour-border-subtle-neutral);
+  border-radius: var(--size-border-radius-md);
+
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Any child focused activates brand border */
+.wrapper:focus-within {
+  border-color: var(--colour-border-intense-brand-secondary);
+  box-shadow: inset 0 0 0 1px var(--colour-border-intense-brand-secondary);
+}
+
+/* ── Floating label — always pinned at top ────────────────────────────────── */
+
+.label {
+  position: absolute;
+  left: var(--scale-100);
+  top: 0;
+  transform: translateY(-50%);
+
+  font-family: inherit;
+  font-size: var(--font-size-caption);
+  line-height: 1;
+  color: var(--colour-text-moderate-neutral);
+
+  pointer-events: none;
+  padding: 0 var(--fixed-50);
+  background: var(--colour-background-subtle-neutral-1);
+}
+
+/* Brand colour on label when any child is focused */
+.wrapper:focus-within .label {
+  color: var(--colour-text-intense-brand-secondary);
+}
+
+/* ── Country selector ─────────────────────────────────────────────────────── */
+
+.countryWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.country {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  /* Right padding leaves room for the chevron */
+  padding: var(--fixed-150) calc(var(--fixed-100) + 16px) var(--fixed-150) var(--scale-100);
+
+  font-family: inherit;
+  font-size: var(--font-size-subtitle-2);
+  color: var(--colour-text-intense-neutral);
+
+  max-width: 112px;
+}
+
+.country:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.countryChevron {
+  position: absolute;
+  right: var(--fixed-100);
+  pointer-events: none;
+  color: var(--colour-text-moderate-neutral);
+  transition: transform 0.2s ease;
+}
+
+.countryWrapper[data-open] .countryChevron {
+  transform: rotate(180deg);
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--colour-border-subtle-neutral);
+  flex-shrink: 0;
+  margin: var(--fixed-100) 0;
+}
+
+/* ── Phone number input ───────────────────────────────────────────────────── */
+
+.input {
+  flex: 1;
+  min-width: 0;
+
+  padding: var(--fixed-150) var(--scale-100);
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-family: inherit;
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  color: var(--colour-text-intense-neutral);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Error state ──────────────────────────────────────────────────────────── */
+
+.root[data-invalid] .wrapper {
+  border-color: var(--colour-border-intense-negative);
+}
+
+.root[data-invalid] .wrapper:focus-within {
+  border-color: var(--colour-border-intense-negative);
+  box-shadow: inset 0 0 0 1px var(--colour-border-intense-negative);
+}
+
+.root[data-invalid] .wrapper:focus-within .label {
+  color: var(--colour-text-intense-negative);
+}
+
+/* ── Helper / error message ───────────────────────────────────────────────── */
+
+.description {
+  font-size: var(--font-size-caption);
+  color: var(--colour-text-moderate-neutral);
+  padding-left: var(--scale-100);
+}
+
+.error {
+  font-size: var(--font-size-caption);
+  color: var(--colour-text-intense-negative);
+  padding-left: var(--scale-100);
+}
+
+/* ── Disabled state ───────────────────────────────────────────────────────── */
+
+.root[aria-disabled='true'] .wrapper {
+  opacity: 0.5;
+  background: var(--colour-background-subtle-neutral-2);
+}

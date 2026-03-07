@@ -1,0 +1,130 @@
+/* ── Root ─────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--fixed-100);
+  min-width: 240px;
+  font-family: var(--font-family-body);
+}
+
+/* ── Input wrapper (positions the floating label) ─────────────────────────── */
+
+.wrapper {
+  position: relative;
+}
+
+/* ── Native input ─────────────────────────────────────────────────────────── */
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--fixed-150) var(--scale-100);
+
+  background: var(--colour-background-subtle-neutral-1);
+  border: 1px solid var(--colour-border-subtle-neutral);
+  border-radius: var(--size-border-radius-md);
+
+  font-family: inherit;
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  color: var(--colour-text-intense-neutral);
+
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Focused: brand border + inset shadow to simulate 2px without shifting layout */
+.input[data-focused] {
+  border-color: var(--colour-border-intense-brand-secondary);
+  box-shadow: inset 0 0 0 1px var(--colour-border-intense-brand-secondary);
+}
+
+/* Keyboard-only focus ring */
+.input[data-focus-visible] {
+  outline: 2px solid var(--colour-border-intense-brand-secondary);
+  outline-offset: 2px;
+}
+
+/* ── Floating label ───────────────────────────────────────────────────────── */
+
+.label {
+  position: absolute;
+  left: var(--scale-100);
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-family: inherit;
+  font-size: var(--font-size-subtitle-2);
+  line-height: 1;
+  color: var(--colour-text-moderate-neutral);
+
+  pointer-events: none;
+  padding: 0 var(--fixed-50);
+  background: transparent;
+
+  transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease,
+    background-color 0.1s ease;
+}
+
+/* Float: focused OR has a value */
+.input[data-focused] ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+  top: 0;
+  font-size: var(--font-size-caption);
+  background: var(--colour-background-subtle-neutral-1);
+  color: var(--colour-text-moderate-neutral);
+}
+
+/* Brand colour on label when focused */
+.input[data-focused] ~ .label {
+  color: var(--colour-text-intense-brand-secondary);
+}
+
+/* Required asterisk */
+.input[aria-required='true'] ~ .label::after {
+  content: ' *';
+  color: var(--colour-text-intense-negative);
+}
+
+/* ── Disabled state ───────────────────────────────────────────────────────── */
+
+.root[data-disabled] .input {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--colour-background-subtle-neutral-2);
+}
+
+.root[data-disabled] .label {
+  opacity: 0.5;
+}
+
+/* ── Error state ──────────────────────────────────────────────────────────── */
+
+.root[data-invalid] .input {
+  border-color: var(--colour-border-intense-negative);
+  box-shadow: none;
+}
+
+.root[data-invalid] .input[data-focused] {
+  border-color: var(--colour-border-intense-negative);
+  box-shadow: inset 0 0 0 1px var(--colour-border-intense-negative);
+}
+
+.root[data-invalid] .input[data-focused] ~ .label {
+  color: var(--colour-text-intense-negative);
+}
+
+/* ── Helper / error message ───────────────────────────────────────────────── */
+
+.description {
+  font-size: var(--font-size-caption);
+  color: var(--colour-text-moderate-neutral);
+  padding-left: var(--scale-100);
+}
+
+.error {
+  font-size: var(--font-size-caption);
+  color: var(--colour-text-intense-negative);
+  padding-left: var(--scale-100);
+}
