@@ -4,7 +4,7 @@ import styles from './Button.module.css';
 
 export interface ButtonProps extends Omit<AriaButtonProps, 'children'> {
   /** Visual variant of the button */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /** Visual size of the button */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Icon rendered before the label */

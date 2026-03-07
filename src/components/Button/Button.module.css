@@ -57,6 +57,28 @@
   background-color: var(--colour-interaction-background-intense-invert-brand-secondary-pressed);
 }
 
+/* ---- Variant: tertiary (outline) ---- */
+/* Uses inset box-shadow instead of border to avoid layout shift on hover */
+.variant-tertiary {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--button-size-border-width-active) var(--colour-border-intense-brand-secondary);
+  color: var(--colour-text-intense-brand-secondary);
+}
+
+.variant-tertiary[data-hovered] {
+  box-shadow: inset 0 0 0 var(--button-size-interaction-border-width-hover) var(--colour-border-intense-brand-secondary);
+}
+
+.variant-tertiary[data-pressed] {
+  box-shadow: inset 0 0 0 var(--button-size-interaction-border-width-pressed) var(--colour-border-intense-brand-secondary);
+}
+
+.variant-tertiary[data-disabled] {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--button-size-border-width-active) var(--colour-border-subtle-neutral);
+  color: var(--colour-text-subtle-neutral);
+}
+
 /* ---- Focus ---- */
 .button[data-focus-visible] {
   outline: 2px solid var(--colour-border-intense-brand-primary);
