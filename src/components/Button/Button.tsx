@@ -1,20 +1,36 @@
+import React from 'react';
 import { Button as AriaButton, type ButtonProps as AriaButtonProps } from 'react-aria-components';
 import styles from './Button.module.css';
 
-// Props will be expanded once Figma design context is applied.
-// Placeholder types based on known CSS tokens (size, variant).
-export interface ButtonProps extends AriaButtonProps {
+export interface ButtonProps extends Omit<AriaButtonProps, 'children'> {
+  /** Visual variant of the button */
+  variant?: 'primary' | 'secondary';
   /** Visual size of the button */
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  /** Visual variant — to be defined from Figma */
-  variant?: string;
+  /** Show icon slot before the label (not yet functional) */
+  leftIcon?: boolean;
+  /** Show icon slot after the label (not yet functional) */
+  rightIcon?: boolean;
+  /** When true, renders the button on a coloured/image background */
+  isOnBackground?: boolean;
+  children?: React.ReactNode;
 }
 
-export const Button = ({ size = 'md', variant, className, children, ...props }: ButtonProps) => {
+export const Button = ({
+  variant = 'primary',
+  size = 'md',
+  leftIcon,
+  rightIcon,
+  isOnBackground = false,
+  className,
+  children,
+  ...props
+}: ButtonProps) => {
   const classes = [
     styles.button,
     styles[`size-${size}`],
-    variant ? styles[`variant-${variant}`] : '',
+    styles[`variant-${variant}`],
+    isOnBackground ? styles['on-background'] : '',
     className ?? '',
   ]
     .filter(Boolean)
@@ -22,7 +38,9 @@ export const Button = ({ size = 'md', variant, className, children, ...props }: 
 
   return (
     <AriaButton className={classes} {...props}>
-      {children}
+      {leftIcon && <span className={styles.icon} />}
+      {children && <span className={styles.label}>{children}</span>}
+      {rightIcon && <span className={styles.icon} />}
     </AriaButton>
   );
 };

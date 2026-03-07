@@ -5,33 +5,40 @@ const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   args: {
+    // label → text control (editable placeholder)
     children: 'Button',
     size: 'md',
+    variant: 'primary',
+    leftIcon: false,
+    rightIcon: false,
+    isOnBackground: false,
+    isDisabled: false,
   },
   argTypes: {
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg'],
     },
-    isDisabled: {
-      control: 'boolean',
-    },
+    // variant → shown as individual stories, not a control
+    variant: { table: { disable: true }, options: ['primary', 'secondary'] },
+    // is/has-prefixed → boolean controls
+    isOnBackground: { control: 'boolean' },
+    isDisabled: { control: 'boolean' },
+    // label (children) → editable text placeholder
+    children: { control: 'text' },
+    leftIcon: { control: 'boolean' },
+    rightIcon: { control: 'boolean' },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {};
-
-export const Small: Story = {
-  args: { size: 'sm' },
+// ---- Variant stories (one per variant value) ----
+export const Primary: Story = {
+  args: { variant: 'primary' },
 };
 
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { isDisabled: true },
+export const Secondary: Story = {
+  args: { variant: 'secondary' },
 };
