@@ -1,0 +1,37 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  title: 'Components/Button',
+  component: Button,
+  args: {
+    children: 'Button',
+    size: 'md',
+  },
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg'],
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Default: Story = {};
+
+export const Small: Story = {
+  args: { size: 'sm' },
+};
+
+export const Large: Story = {
+  args: { size: 'lg' },
+};
+
+export const Disabled: Story = {
+  args: { isDisabled: true },
+};

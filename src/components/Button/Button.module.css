@@ -1,0 +1,72 @@
+/* Base button styles — tokens from global.css */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-fixed-sm-3);
+  border: var(--button-size-border-width-active) solid transparent;
+  cursor: pointer;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-line-height-button);
+  letter-spacing: var(--font-letter-spacing-button);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  outline: none;
+
+  /* Default: primary brand filled */
+  background-color: var(--colour-background-intense-brand-primary);
+  color: var(--colour-text-intense-on-intense-brand-primary);
+  border-color: var(--colour-border-intense-brand-primary);
+}
+
+/* Hover */
+.button[data-hovered] {
+  background-color: var(--colour-interaction-background-intense-brand-primary-hover);
+  border-width: var(--button-size-interaction-border-width-hover);
+}
+
+/* Pressed */
+.button[data-pressed] {
+  background-color: var(--colour-interaction-background-intense-brand-primary-pressed);
+  border-width: var(--button-size-interaction-border-width-pressed);
+}
+
+/* Focus visible */
+.button[data-focus-visible] {
+  outline: 2px solid var(--colour-border-intense-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.button[data-disabled] {
+  background-color: var(--colour-background-moderate-neutral-1);
+  color: var(--colour-text-subtle-neutral);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+/* ---- Sizes ---- */
+.size-xs {
+  font-size: var(--font-size-button-2);
+  border-radius: var(--button-size-border-radius-xs);
+  padding: var(--space-fixed-sm-2) var(--space-fixed-sm-4);
+}
+
+.size-sm {
+  font-size: var(--font-size-button-2);
+  border-radius: var(--button-size-border-radius-sm);
+  padding: var(--space-fixed-sm-3) var(--space-fixed-sm-5);
+}
+
+.size-md {
+  font-size: var(--font-size-button-1);
+  border-radius: var(--button-size-border-radius-md);
+  padding: var(--space-fixed-sm-4) var(--space-fixed-md-1);
+}
+
+.size-lg {
+  font-size: var(--font-size-button-1);
+  border-radius: var(--button-size-border-radius-lg);
+  padding: var(--space-fixed-sm-5) var(--space-fixed-md-2);
+}
