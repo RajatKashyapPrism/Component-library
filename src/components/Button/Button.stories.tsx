@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
 
+const PlusIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
@@ -26,8 +32,14 @@ const meta: Meta<typeof Button> = {
     isDisabled: { control: 'boolean' },
     // label (children) → editable text placeholder
     children: { control: 'text' },
-    leftIcon: { control: 'boolean' },
-    rightIcon: { control: 'boolean' },
+    leftIcon: {
+      control: 'boolean',
+      mapping: { true: <PlusIcon />, false: undefined },
+    },
+    rightIcon: {
+      control: 'boolean',
+      mapping: { true: <PlusIcon />, false: undefined },
+    },
   },
 };
 

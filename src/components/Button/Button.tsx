@@ -7,10 +7,10 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'children'> {
   variant?: 'primary' | 'secondary';
   /** Visual size of the button */
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  /** Show icon slot before the label (not yet functional) */
-  leftIcon?: boolean;
-  /** Show icon slot after the label (not yet functional) */
-  rightIcon?: boolean;
+  /** Icon rendered before the label */
+  leftIcon?: React.ReactNode;
+  /** Icon rendered after the label */
+  rightIcon?: React.ReactNode;
   /** When true, renders the button on a coloured/image background */
   isOnBackground?: boolean;
   children?: React.ReactNode;
@@ -38,9 +38,9 @@ export const Button = ({
 
   return (
     <AriaButton className={classes} {...props}>
-      {leftIcon && <span className={styles.icon} />}
+      {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
       {children && <span className={styles.label}>{children}</span>}
-      {rightIcon && <span className={styles.icon} />}
+      {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
     </AriaButton>
   );
 };

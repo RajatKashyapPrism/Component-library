@@ -65,7 +65,7 @@
 
 /* ---- Disabled ---- */
 .button[data-disabled] {
-  background-color: var(--colour-background-moderate-neutral-1);
+  background-color: var(--colour-background-subtle-neutral-3);
   color: var(--colour-text-subtle-neutral);
   cursor: not-allowed;
 }
@@ -113,6 +113,14 @@
   color: var(--colour-text-intense-on-intense-brand-invert-primary);
 }
 
+.variant-primary.on-background[data-hovered] {
+  background-color: var(--colour-interaction-background-intense-invert-brand-primary-hover);
+}
+
+.variant-primary.on-background[data-pressed] {
+  background-color: var(--colour-interaction-background-intense-invert-brand-primary-pressed);
+}
+
 /* ---- Icon slots ---- */
 .icon {
   display: flex;
@@ -135,5 +143,9 @@
 
 /* ---- Label ---- */
 .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  padding: 0 var(--space-fixed-sm-2);
 }
