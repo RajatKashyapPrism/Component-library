@@ -26,7 +26,7 @@ const meta: Meta<typeof Button> = {
       options: ['xs', 'sm', 'md', 'lg'],
     },
     // variant → shown as individual stories, not a control
-    variant: { table: { disable: true }, options: ['primary', 'secondary', 'tertiary'] },
+    variant: { table: { disable: true }, options: ['primary', 'secondary', 'tertiary', 'hyperlink', 'underlined'] },
     // is/has-prefixed → boolean controls
     isOnBackground: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
@@ -57,4 +57,12 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: { variant: 'tertiary' },
+};
+
+export const Hyperlink: Story = {
+  args: { variant: 'hyperlink' },
+};
+
+export const Underlined: Story = {
+  args: { variant: 'underlined' },
 };

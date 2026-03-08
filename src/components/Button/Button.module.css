@@ -79,6 +79,184 @@
   color: var(--colour-text-subtle-neutral);
 }
 
+/* ---- Variant: hyperlink ---- */
+.variant-hyperlink {
+  background-color: transparent;
+  color: var(--hyperlink-colour-active);
+  font-weight: var(--font-weight-regular);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Background extends 8px past the button on left and right */
+.variant-hyperlink[data-hovered]::before,
+.variant-hyperlink[data-pressed]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8px;
+  right: -8px;
+  background-color: var(--colour-background-subtle-info);
+  border-radius: var(--size-border-radius-md);
+  z-index: -1;
+}
+
+.variant-hyperlink[data-hovered] {
+  color: var(--hyperlink-colour-interaction-hover);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: currentColor;
+  text-decoration-skip-ink: none;
+}
+
+.variant-hyperlink[data-pressed] {
+  color: var(--hyperlink-colour-active);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: currentColor;
+  text-decoration-skip-ink: none;
+}
+
+/* Override shared [data-disabled] background — hyperlink has no fill */
+.variant-hyperlink[data-disabled] {
+  background-color: transparent;
+}
+
+/* ---- Hyperlink size overrides ---- */
+/* xs: py=4px, gap=4px, font=caption (12px) */
+.variant-hyperlink.size-xs {
+  padding: var(--space-fixed-sm-2) 0;
+  gap: var(--space-fixed-sm-2);
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+  min-width: 0;
+}
+
+/* sm: py=2px, gap=8px, font=subtitle-2 (14px) */
+.variant-hyperlink.size-sm {
+  padding: var(--space-fixed-sm-1) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  min-width: 0;
+}
+
+/* md: py=8px, gap=8px, font=subtitle-2 (14px) */
+.variant-hyperlink.size-md {
+  padding: var(--space-fixed-sm-3) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  min-width: 0;
+}
+
+/* lg: py=8px, gap=8px, label px=4px, font=subtitle-1 (16px) */
+.variant-hyperlink.size-lg {
+  padding: var(--space-fixed-sm-3) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-1);
+  line-height: var(--font-line-height-subtitle-1);
+  min-width: 0;
+}
+
+/* Label: no horizontal padding by default; 4px on lg */
+.variant-hyperlink .label {
+  padding: 0;
+}
+
+.variant-hyperlink.size-lg .label {
+  padding: 0 var(--space-fixed-sm-2);
+}
+
+/* ---- Variant: underlined ---- */
+.variant-underlined {
+  background-color: transparent;
+  color: var(--colour-text-intense-neutral);
+  font-weight: var(--font-weight-regular);
+  position: relative;
+  isolation: isolate;
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-skip-ink: none;
+}
+
+.variant-underlined .icon {
+  color: var(--colour-border-intense-neutral);
+}
+
+/* Background extends 8px past the button on left and right */
+.variant-underlined[data-hovered]::before,
+.variant-underlined[data-pressed]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8px;
+  right: -8px;
+  border-radius: var(--size-border-radius-md);
+  z-index: -1;
+}
+
+.variant-underlined[data-hovered]::before {
+  background-color: var(--colour-interaction-background-subtle-neutral-1-hover);
+}
+
+.variant-underlined[data-pressed]::before {
+  background-color: var(--colour-interaction-background-subtle-neutral-1-pressed);
+}
+
+/* Disabled: remove underline, override shared background, apply subtle icon color */
+.variant-underlined[data-disabled] {
+  background-color: transparent;
+  text-decoration-line: none;
+}
+
+.variant-underlined[data-disabled] .icon {
+  color: var(--colour-border-subtle-neutral);
+}
+
+/* ---- Underlined size overrides (same values as hyperlink) ---- */
+.variant-underlined.size-xs {
+  padding: var(--space-fixed-sm-2) 0;
+  gap: var(--space-fixed-sm-2);
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+  min-width: 0;
+}
+
+.variant-underlined.size-sm {
+  padding: var(--space-fixed-sm-1) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  min-width: 0;
+}
+
+.variant-underlined.size-md {
+  padding: var(--space-fixed-sm-3) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-2);
+  line-height: var(--font-line-height-subtitle-2);
+  min-width: 0;
+}
+
+.variant-underlined.size-lg {
+  padding: var(--space-fixed-sm-3) 0;
+  gap: var(--space-fixed-sm-3);
+  font-size: var(--font-size-subtitle-1);
+  line-height: var(--font-line-height-subtitle-1);
+  min-width: 0;
+}
+
+.variant-underlined .label {
+  padding: 0;
+}
+
+.variant-underlined.size-lg .label {
+  padding: 0 var(--space-fixed-sm-2);
+}
+
 /* ---- Focus ---- */
 .button[data-focus-visible] {
   outline: 2px solid var(--colour-border-intense-brand-primary);
