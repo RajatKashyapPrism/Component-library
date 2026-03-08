@@ -1,20 +1,42 @@
 {
-  "name": "component-library",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@prism-design-global/components",
+  "version": "0.1.0",
+  "description": "Prism Design Global component library",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/style.css",
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:lib": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "react-aria-components": ">=1"
+  },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-aria-components": "^1.16.0",
-    "react-dom": "^19.2.0"
+    "react-aria-components": "^1.16.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -28,9 +50,12 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.2.16",
     "globals": "^16.5.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "storybook": "^10.2.16",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
   }
 }
