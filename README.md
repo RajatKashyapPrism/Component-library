@@ -1,6 +1,6 @@
-# OYO Design System — Component Library
+# PRISM Design System — Component Library
 
-A multi-brand, accessible component library built for OYO's family of brands. Components are documented and previewed in Storybook with full theming support across brands, themes, densities, and platforms.
+A multi-brand, accessible component library built for PRISM's family of brands. Components are documented and previewed in Storybook with full theming support across brands, themes, densities, and platforms.
 
 ---
 
