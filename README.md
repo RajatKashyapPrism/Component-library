@@ -129,6 +129,53 @@ All interactive components are built on [React Aria Components](https://react-sp
 
 ---
 
+## Publishing a New Version
+
+### When you have a new component ready to ship
+
+**1. Export the component from the library entry point**
+
+Add it to `src/index.ts`:
+```ts
+export { NewComponent } from './components/NewComponent';
+export type { NewComponentProps } from './components/NewComponent';
+```
+
+**2. Commit your changes**
+```bash
+git add .
+git commit -m "Add NewComponent"
+```
+
+**3. Push and merge to main**
+```bash
+git push
+```
+Open a PR and merge into `main`.
+
+**4. Switch to main and pull**
+```bash
+git checkout main
+git pull
+```
+
+**5. Bump the version**
+```bash
+npm version patch   # bug fix
+npm version minor   # new component or feature
+npm version major   # breaking change
+```
+This updates `package.json` and creates a git tag (e.g. `v0.2.0`) automatically.
+
+**6. Push the commit and tag**
+```bash
+git push --follow-tags
+```
+
+The GitHub Action triggers on the tag, builds the library, and publishes to npm automatically. Monitor progress at [GitHub Actions](https://github.com/RajatKashyapPrism/Component-library/actions).
+
+---
+
 ## Design Source
 
 Components are implemented from the [Parent Design System](https://www.figma.com/design/IyriPXG0e0FkwH6iBgMtTm/Parent-Design-system?node-id=5352-34583&m=dev)Figma file. Each component references its Figma node for tokens, states, and specs.
