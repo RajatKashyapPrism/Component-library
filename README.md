@@ -1,73 +1,134 @@
-# React + TypeScript + Vite
+# OYO Design System — Component Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-brand, accessible component library built for OYO's family of brands. Components are documented and previewed in Storybook with full theming support across brands, themes, densities, and platforms.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+| Tool | Version |
+|------|---------|
+| React | 19 |
+| TypeScript | 5.9 |
+| Vite | 7 |
+| Storybook | 10 |
+| React Aria Components | 1.16 |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start Storybook (component explorer)
+npm run storybook
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Start Vite dev server
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
+
+# Build static Storybook
+npm run build-storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Storybook runs at **http://localhost:6006** by default.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
 ```
+src/
+  components/
+    Button/
+      Button.tsx            # Component
+      Button.module.css     # CSS Modules styles
+      Button.stories.tsx    # Storybook stories
+      index.ts              # Public export
+    Input/
+      TextField.tsx
+      PhoneField.tsx
+      Input.stories.tsx
+      ...
+  global.css                # All design tokens
+```
+
+---
+
+## Components
+
+### Button
+
+A multi-variant, accessible button built on React Aria.
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary'` | `'primary'` | Visual style |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `leftIcon` | `ReactNode` | — | Icon before label |
+| `rightIcon` | `ReactNode` | — | Icon after label |
+| `isOnBackground` | `boolean` | `false` | Use on coloured backgrounds |
+| `isDisabled` | `boolean` | `false` | Disabled state (from React Aria) |
+| `children` | `ReactNode` | — | Button label |
+
+### TextField
+
+A text input field with label and error message support.
+
+### PhoneField
+
+A phone number input with country code selector and format validation.
+
+---
+
+## Multi-Brand Theming
+
+The library supports 6 brands, switchable via the Storybook toolbar:
+
+| Brand | Primary Color |
+|-------|--------------|
+| `oyo` | Berry / Pink |
+| `belvilla` | Emerald |
+| `dancenter` | Firebrick |
+| `motel-6` | Blue |
+| `checkin` | Clay |
+| `studio-6` | Scarlet + Marine |
+
+Additional toolbar controls:
+
+- **Theme** — `light` / `dark`
+- **Density** — `comfortable` / `dense` / `tight`
+- **Platform** — `desktop` / `mobile`
+
+---
+
+## Design Tokens
+
+All tokens live in `src/global.css` and follow a layered cascade:
+
+```
+Platform (mobile/desktop)
+  → Density (comfortable/dense/tight)
+    → Brand (oyo/belvilla/...)
+      → Theme (light/dark override)
+```
+
+Token categories include spacing, color, typography, border radius, icon size, and component-specific tokens (button, badge, chip).
+
+---
+
+## Accessibility
+
+All interactive components are built on [React Aria Components](https://react-spectrum.adobe.com/react-aria/). This provides keyboard navigation, screen reader support, and ARIA attributes out of the box.
+
+---
+
+## Design Source
+
+Components are implemented from the **OYO Parent Design System** Figma file. Each component references its Figma node for tokens, states, and specs.
