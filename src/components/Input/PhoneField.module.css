@@ -32,7 +32,7 @@
 
 .label {
   position: absolute;
-  left: var(--scale-100);
+  left: var(--space-fixed-sm-5);
   top: 0;
   transform: translateY(-50%);
 
@@ -69,7 +69,7 @@
   cursor: pointer;
 
   /* Right padding leaves room for the chevron */
-  padding: var(--fixed-150) calc(var(--fixed-100) + 16px) var(--fixed-150) var(--scale-100);
+  padding: var(--space-fixed-sm-4) calc(var(--space-fixed-sm-5) + 16px) var(--space-fixed-sm-4) var(--space-fixed-sm-5);
 
   font-family: inherit;
   font-size: var(--font-size-subtitle-2);
@@ -111,7 +111,7 @@
   flex: 1;
   min-width: 0;
 
-  padding: var(--fixed-150) var(--scale-100);
+  padding: var(--space-fixed-sm-4) var(--space-fixed-sm-5);
 
   background: transparent;
   border: none;
@@ -148,13 +148,13 @@
 .description {
   font-size: var(--font-size-caption);
   color: var(--colour-text-moderate-neutral);
-  padding-left: var(--scale-100);
+  padding-left: var(--space-fixed-sm-5);
 }
 
 .error {
   font-size: var(--font-size-caption);
   color: var(--colour-text-intense-negative);
-  padding-left: var(--scale-100);
+  padding-left: var(--space-fixed-sm-5);
 }
 
 /* ── Disabled state ───────────────────────────────────────────────────────── */

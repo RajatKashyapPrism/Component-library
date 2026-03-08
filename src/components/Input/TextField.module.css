@@ -19,7 +19,7 @@
 .input {
   width: 100%;
   box-sizing: border-box;
-  padding: var(--fixed-150) var(--scale-100);
+  padding: var(--space-fixed-sm-4) var(--space-fixed-sm-5);
 
   background: var(--colour-background-subtle-neutral-1);
   border: 1px solid var(--colour-border-subtle-neutral);
@@ -50,7 +50,7 @@
 
 .label {
   position: absolute;
-  left: var(--scale-100);
+  left: var(--space-fixed-sm-5);
   top: 50%;
   transform: translateY(-50%);
 
@@ -120,11 +120,11 @@
 .description {
   font-size: var(--font-size-caption);
   color: var(--colour-text-moderate-neutral);
-  padding-left: var(--scale-100);
+  padding-left: var(--space-fixed-sm-5);
 }
 
 .error {
   font-size: var(--font-size-caption);
   color: var(--colour-text-intense-negative);
-  padding-left: var(--scale-100);
+  padding-left: var(--space-fixed-sm-5);
 }
