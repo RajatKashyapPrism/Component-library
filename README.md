@@ -131,4 +131,4 @@ All interactive components are built on [React Aria Components](https://react-sp
 
 ## Design Source
 
-Components are implemented from the **OYO Parent Design System** Figma file. Each component references its Figma node for tokens, states, and specs.
+Components are implemented from the [** Parent Design System**] (https://www.figma.com/design/IyriPXG0e0FkwH6iBgMtTm/Parent-Design-system?node-id=5352-34583&m=dev)Figma file. Each component references its Figma node for tokens, states, and specs.
