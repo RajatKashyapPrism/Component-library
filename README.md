@@ -89,7 +89,7 @@ A phone number input with country code selector and format validation.
 
 ## Multi-Brand Theming
 
-The library supports 6 brands, switchable via the Storybook toolbar:
+The library supports 7 brands, switchable via the Storybook toolbar:
 
 | Brand | Primary Color |
 |-------|--------------|
@@ -99,6 +99,7 @@ The library supports 6 brands, switchable via the Storybook toolbar:
 | `motel-6` | Blue |
 | `checkin` | Clay |
 | `studio-6` | Scarlet + Marine |
+| `innov8` | Orange + Asphalt |
 
 Additional toolbar controls:
 
@@ -115,11 +116,11 @@ All tokens live in `src/global.css` and follow a layered cascade:
 ```
 Platform (mobile/desktop)
   → Density (comfortable/dense/tight)
-    → Brand (oyo/belvilla/...)
+    → Brand (oyo/belvilla/innov8/...)
       → Theme (light/dark override)
 ```
 
-Token categories include spacing, color, typography, border radius, icon size, and component-specific tokens (button, badge, chip).
+Token categories include spacing, color, typography, border radius, border width, icon size, footer colors, brand behavior flags, and component-specific tokens (button, badge, chip).
 
 ---
 

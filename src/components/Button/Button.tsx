@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Button as AriaButton, type ButtonProps as AriaButtonProps } from 'react-aria-components';
 import styles from './Button.module.css';
 
@@ -8,12 +8,12 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'children'> {
   /** Visual size of the button */
   size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Icon rendered before the label */
-  leftIcon?: React.ReactNode;
+  leftIcon?: ReactNode;
   /** Icon rendered after the label */
-  rightIcon?: React.ReactNode;
+  rightIcon?: ReactNode;
   /** When true, renders the button on a coloured/image background */
   isOnBackground?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const Button = ({

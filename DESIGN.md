@@ -2,10 +2,10 @@
 
 ## Overview
 
-A multi-brand, multi-platform component library built for a hospitality group spanning six brands. The system is designed to share a single set of components while allowing each brand to express its own visual identity — colors, typography, border radii, and component sizing — entirely through CSS custom properties. No component code changes when you switch brands.
+A multi-brand, multi-platform component library built for a hospitality group spanning seven brands. The system is designed to share a single set of components while allowing each brand to express its own visual identity — colors, typography, border radii, and component sizing — entirely through CSS custom properties. No component code changes when you switch brands.
 
 Axes of variation:
-- **Brand** — six distinct identities (oyo, belvilla, dancenter, motel-6, checkin, studio-6)
+- **Brand** — seven distinct identities (oyo, belvilla, motel-6, checkin, studio-6, dancenter, innov8)
 - **Theme** — light (default) and dark
 - **Density** — comfortable, dense, tight
 - **Platform** — desktop and mobile
@@ -83,8 +83,9 @@ Each brand defines the full set of semantic tokens. Components reference only se
 --colour-background-moderate-neutral-{1-3} Mid-emphasis neutral fill
 --colour-background-intense-{intent}       High-emphasis fill (solid)
 --colour-background-subtle-brand-primary   Tinted brand-primary fill
+--colour-background-subtle-brand-accent    Tinted brand-accent fill
 ```
-Intent values: `negative`, `alert`, `positive`, `info`, `offer`, `premium`, `neutral-1/2/3`, `brand-primary`, `brand-secondary`, `rating-filled`, `rating-unfilled`
+Intent values: `negative`, `alert`, `positive`, `info`, `offer`, `premium`, `neutral-1/2/3`, `brand-primary`, `brand-secondary`, `brand-accent`, `rating-filled`, `rating-unfilled`
 
 **Colour — Text**
 ```
@@ -94,6 +95,7 @@ Intent values: `negative`, `alert`, `positive`, `info`, `offer`, `premium`, `neu
 --colour-text-intense-{intent}             Coloured text for semantic meaning
 --colour-text-intense-on-intense           Text on solid (intense) backgrounds
 --colour-text-intense-on-intense-{intent}  Text on intent-coloured intense backgrounds
+--colour-text-intense-brand-accent         Brand accent text
 ```
 
 **Colour — Border**
@@ -103,6 +105,7 @@ Intent values: `negative`, `alert`, `positive`, `info`, `offer`, `premium`, `neu
 --colour-border-subtle-neutral             Subtle / divider border
 --colour-border-{intensity}-{intent}       Intent-coloured borders
 --colour-border-intense-on-intense         Border on solid backgrounds
+--colour-border-intense-brand-accent       Brand accent border
 ```
 
 **Colour — Interaction**
@@ -137,6 +140,7 @@ Intent values: `negative`, `alert`, `positive`, `info`, `offer`, `premium`, `neu
 ```
 --size-border-radius-xs … --size-border-radius-xxl   Component radii
 --size-border-radius-pill                             Fully rounded
+--size-border-width-default                          Default 1px border width
 ```
 Each brand defines its own values for these, enabling sharp-cornered or heavily rounded aesthetics per brand.
 
@@ -149,6 +153,8 @@ Each brand defines its own values for these, enabling sharp-cornered or heavily 
 --chip-size-border-radius-sm/md/lg
 --chip-size-border-width
 --chip-size-interaction-border-width-hover/pressed
+--footer-colour-background/text/border
+--brandchecks-propertycard-md-pricing-*
 ```
 
 ---
@@ -175,6 +181,7 @@ The global palette contains full 50–950 ramps for each hue. Brands reference s
 | `clay` | Checkin brand primary (warm tan) |
 | `scarlet` | Studio 6 brand primary (red) |
 | `marine` | Studio 6 brand secondary (dark navy) |
+| `orange` | Innov8 brand primary |
 | `crimson` | Negative / error across most brands |
 | `amber` | Alert / warning across most brands |
 | `sky` | Info across most brands |
@@ -185,7 +192,7 @@ The global palette contains full 50–950 ramps for each hue. Brands reference s
 
 ## Typography
 
-All brands share the same type scale. OYO, Belvilla, and Motel 6 use Inter for both body and heading. Dancenter and Studio 6 use Optima nova LT Pro for headings. Checkin uses Host Grotesk for body.
+All brands share the same type scale. OYO, Belvilla, Motel 6, and Innov8 use Inter for both body and heading. Dancenter and Studio 6 use Optima nova LT Pro for headings. Checkin uses Host Grotesk for body.
 
 | Token | Value |
 |---|---|
@@ -224,12 +231,15 @@ Letter spacing is negative for large headings (down to -1.5px at H1) and neutral
 | **motel-6** | Blue | Asphalt (dark) | Inter | Inter | Moderate radius |
 | **checkin** | Clay (warm tan) | Asphalt (dark) | Inter | Host Grotesk | 0px — fully sharp corners |
 | **studio-6** | Scarlet (red) | Marine (dark navy) | Optima nova LT Pro | Inter | Moderate radius |
+| **innov8** | Orange | Asphalt (dark) | Inter | Inter | Tighter radius |
 
 ### Brand identity notes
 - **Checkin** is the most visually distinct: all border radii are 0px, giving it a strictly rectilinear feel.
 - **Belvilla** uses an amber-tinted offer colour rather than the emerald shared by other brands for offer states.
 - **Studio 6** uses `--scarlet-base` (#ed1c2e) directly as its brand-primary background, rather than a palette step, to maintain brand-accurate red.
 - **Dancenter** and **Studio 6** share the Optima nova LT Pro heading font for a premium, editorial feel.
+- **Dancenter** uses gold as a brand-accent palette for offer and footer treatments.
+- **Innov8** uses `--orange-base` for brand-primary surfaces with asphalt as the secondary/accent neutral.
 
 ---
 
