@@ -7,6 +7,7 @@
 - [x] Button — canvas `5352:34583`
 - [ ] Chip
 - [x] Text Field — canvas `7061:77904`
+- [x] Section Header — canvas `7061:77886`
 - [ ] Checkbox
 - [ ] Radio
 - [ ] Toggle / Switch
@@ -96,6 +97,78 @@ Props: `size`, `state`, `input`, `lAsset` (leading icon), `tAsset` (trailing ico
 | Active | `14972:1239` |
 | Error | `14972:1284` |
 
+### Section Header — `5521:35923`
+Canvas: `7061:77886`  
+Sizes: `Small` · `Medium` · `Large`  
+Overline: `None` · `Text` · `Graphic`  
+T asset types: `Text block` · `Icon group` · `Switch` · `Button group` · `Graphic`  
+Key props: `size`, `overline`, `tAsset` (bool, show trailing asset), `tAsset1` (trailing asset type), `lAsset` (bool, leading icon), `lSubtitle` (bool), `lButtons` (bool, show button array), `overlineSlot` (bool), `componentSlot` (bool), `tChevron` (bool), `tIcon` (bool)
+
+**Size × Overline (T asset = Text block)**
+| Size | Overline | Node ID |
+|---|---|---|
+| Small | None | `5521:35980` |
+| Medium | None | `5778:39569` |
+| Large | None | `5778:39911` |
+| Small | Text | `5815:46625` |
+| Medium | Text | `5815:46642` |
+| Large | Text | `5815:46659` |
+| Small | Graphic | `5817:47666` |
+| Medium | Graphic | `5817:47683` |
+| Large | Graphic | `5817:47700` |
+
+**Size × Overline (T asset = Icon group)**
+| Size | Overline | Node ID |
+|---|---|---|
+| Small | None | `5627:38093` |
+| Medium | None | `5778:39586` |
+| Large | None | `5778:39928` |
+| Small | Text | `5815:46676` |
+| Medium | Text | `5815:46692` |
+| Large | Text | `5815:46708` |
+| Small | Graphic | `5817:47717` |
+| Medium | Graphic | `5817:47733` |
+| Large | Graphic | `5817:47749` |
+
+**Size × Overline (T asset = Switch)**
+| Size | Overline | Node ID |
+|---|---|---|
+| Small | None | `5778:39030` |
+| Medium | None | `5778:39602` |
+| Large | None | `5778:39944` |
+| Small | Text | `5815:46724` |
+| Medium | Text | `5815:46738` |
+| Large | Text | `5815:46752` |
+| Small | Graphic | `5817:47765` |
+| Medium | Graphic | `5817:47779` |
+| Large | Graphic | `5817:47793` |
+
+**Size × Overline (T asset = Button group)**
+| Size | Overline | Node ID |
+|---|---|---|
+| Small | None | `5630:38237` |
+| Medium | None | `5778:39616` |
+| Large | None | `5778:39958` |
+| Small | Text | `5815:46766` |
+| Medium | Text | `5815:46781` |
+| Large | Text | `5815:46796` |
+| Small | Graphic | `5817:47807` |
+| Medium | Graphic | `5817:47822` |
+| Large | Graphic | `5817:47837` |
+
+**Size × Overline (T asset = Graphic)**
+| Size | Overline | Node ID |
+|---|---|---|
+| Small | None | `5775:38588` |
+| Medium | None | `5778:39631` |
+| Large | None | `5778:39973` |
+| Small | Text | `5815:46811` |
+| Medium | Text | `5815:46824` |
+| Large | Text | `5815:46837` |
+| Small | Graphic | `5817:47852` |
+| Medium | Graphic | `5817:47865` |
+| Large | Graphic | `5817:47878` |
+
 ---
 
 ## Session Log
@@ -103,3 +176,4 @@ Props: `size`, `state`, `input`, `lAsset` (leading icon), `tAsset` (trailing ico
 |---|---|
 | 2026-04-30 | Button, FAB, Text Field (partial) |
 | 2026-04-30 | Text Field — full (all sizes, states, input types) |
+| 2026-05-01 | Section Header — full (all sizes × overline × T asset types) |
