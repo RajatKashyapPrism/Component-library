@@ -11,13 +11,14 @@ figma:
 
 available_combinations:
   primary:    [xs, sm, md, lg]
-  secondary:  [md]
-  tertiary:   [md]
-  neutral:    [md]
-  hyperlink:  [md]
-  underlined: [md]
+  secondary:  [xs, sm, md, lg]
+  tertiary:   [xs, sm, md, lg]
+  neutral:    [xs, sm, md]
+  hyperlink:  [xs, sm, md, lg]
+  underlined: [xs, sm, md, lg]
 
 variants:
+  # primary
   - node_id: "5639:38292"
     props: { variant: primary, size: xs }
   - node_id: "444:5332"
@@ -26,16 +27,54 @@ variants:
     props: { variant: primary, size: md }
   - node_id: "444:5722"
     props: { variant: primary, size: lg }
+
+  # secondary
+  - node_id: "5639:38364"
+    props: { variant: secondary, size: xs }
+  - node_id: "444:5380"
+    props: { variant: secondary, size: sm }
   - node_id: "444:5526"
     props: { variant: secondary, size: md }
+  - node_id: "444:5770"
+    props: { variant: secondary, size: lg }
+
+  # tertiary
+  - node_id: "5639:38340"
+    props: { variant: tertiary, size: xs }
+  - node_id: "444:5430"
+    props: { variant: tertiary, size: sm }
   - node_id: "444:5674"
     props: { variant: tertiary, size: md }
+  - node_id: "444:5820"
+    props: { variant: tertiary, size: lg }
+
+  # neutral (no lg variant in component set)
+  - node_id: "20045:42793"
+    props: { variant: neutral, size: xs }
+  - node_id: "17382:27389"
+    props: { variant: neutral, size: sm }
   - node_id: "17382:27443"
     props: { variant: neutral, size: md }
+
+  # hyperlink
+  - node_id: "5639:38316"
+    props: { variant: hyperlink, size: xs }
+  - node_id: "5328:26583"
+    props: { variant: hyperlink, size: sm }
   - node_id: "5328:26577"
     props: { variant: hyperlink, size: md }
-  - node_id: TBD
+  - node_id: "16428:18167"
+    props: { variant: hyperlink, size: lg }
+
+  # underlined
+  - node_id: "8929:43558"
+    props: { variant: underlined, size: xs }
+  - node_id: "8929:43638"
+    props: { variant: underlined, size: sm }
+  - node_id: "8929:43718"
     props: { variant: underlined, size: md }
+  - node_id: "16428:18175"
+    props: { variant: underlined, size: lg }
 
 props:
   semantic:
@@ -102,11 +141,96 @@ overrides:
     - layer_name: Trailing separator
       controlled_by: isSplit
 
+usage:
+  primary:
+    intent: |
+      Reserved for the single most important action of the entire page —
+      typically the product's core CTA. One primary per page, never two.
+      Use it for the action the page exists to drive: a transactional
+      commit or a conversion event. Not a generic "default action" colour.
+    when_to_use:
+      - product-level core CTA — the action the page exists to drive
+      - transactional commit where intent converts to outcome
+      - search submission on a search-driven surface
+    examples:
+      - "Search" on a search / discovery page
+      - "Pay now" on checkout / payment
+      - "Book now" on a booking flow
+      - "Confirm and pay" on order review
+    do_not_use_for:
+      - secondary or supporting actions on the same page
+      - destructive actions (use a confirm dialog or neutral)
+      - navigation between sections or tabs
+      - repeated row actions inside lists, cards, or tables
+      - any action that is not the page's single most important CTA
+
+  secondary:
+    intent: |
+      Page-level primary action. Important to the current page or flow,
+      but not a core product CTA. Used for actions that progress, save,
+      or complete work on the page.
+    when_to_use:
+      - page-level primary action that is not the product's core CTA
+      - flow progression actions (Done, Continue, Next, Save, Submit, Apply)
+      - dialog / modal confirm action that is not the product CTA
+      - prominent action when no product-level primary is on the page
+    examples:
+      - "Done" on a settings or filter sheet
+      - "Continue" / "Next" in a multi-step flow
+      - "Save" on a form
+      - "Apply" on a filter panel
+    do_not_use_for:
+      - product-level core CTA (use primary)
+      - cancel / dismiss / back action paired with secondary (use tertiary ghost)
+
+  tertiary:
+    intent: |
+      Low-emphasis bordered ghost action. Tertiary-level — used for
+      actions that are alternates to a primary or secondary, or for
+      lower-importance actions that still need to be highly accessible
+      and discoverable. Two roles:
+        1. Standalone alternate action — discoverable but de-emphasised,
+           typically inside cards, carousels, list surfaces.
+        2. Ghost pair partner — every filled button (primary or
+           secondary) is paired with a tertiary ghost for cancel / back /
+           dismiss.
+    when_to_use:
+      - low-importance alternate action that still needs to be highly accessible
+      - "view more" / "learn more" / "see more" inside cards or card carousels
+      - cancel / dismiss / back paired with a filled primary or secondary
+      - third action in dense action rows
+      - action inside cards or modals where filled weight would compete with card content
+    examples:
+      - "View more" inside a content card
+      - "Learn more" on a feature card
+      - "See more" on the last slide of a card carousel
+      - "Cancel" paired with "Save"
+      - "Back" paired with "Continue"
+      - "Discard" paired with "Done"
+
+  neutral:
+    intent: achromatic action with no brand colour
+    when_to_use:
+      - utility actions in chrome (toolbars, filters, dropdowns)
+      - dark or branded surfaces where brand colour would clash
+
+  hyperlink:
+    intent: inline text link, no underline
+    when_to_use:
+      - inline within paragraph text or table cells
+      - "see all" / "view more" anchors that navigate elsewhere
+
+  underlined:
+    intent: inline text link with underline
+    when_to_use:
+      - text link that needs stronger affordance inside dense copy
+      - terms, privacy, footer links
+
 decision_tree:
   variant:
-    - { condition: "primary CTA, one per screen/section", use: primary }
-    - { condition: "supporting action alongside primary", use: secondary }
-    - { condition: "low-emphasis ghost action, bordered", use: tertiary }
+    - { condition: "single product-level CTA on the whole page (search, pay now, book now)", use: primary }
+    - { condition: "page-level primary action — flow progression or page commit (done, continue, next, save)", use: secondary }
+    - { condition: "tertiary-level alternate action (view more, learn more, see more inside cards / carousels) OR ghost partner for a filled button (cancel, back, dismiss)", use: tertiary }
     - { condition: "achromatic action, no brand colour", use: neutral }
     - { condition: "inline text link, no underline", use: hyperlink }
     - { condition: "inline text link with underline", use: underlined }
@@ -126,8 +250,10 @@ composition:
   spacing:
     sibling_gap_px: 8
   rules:
-    - one primary per screen section — never two primaries side by side
-    - standard two-action pairing is primary + secondary
+    - one primary per page — reserved for the product's core CTA (search, pay now, book now); never two primaries on the same page
+    - secondary is the page-level primary — use for flow progression or page commit (done, continue, next, save) when the action is not the product's core CTA
+    - filled buttons (primary or secondary) are always paired with a tertiary ghost button — never pair two filled buttons together
+    - tertiary ghost carries the cancel / back / dismiss role in a filled + ghost pair
     - hyperlink and underlined are inline — do not place in button rows
   see_also: [fab]
 
@@ -146,8 +272,8 @@ validation:
     - when: "hasTrailingIcon=true"
       override: "T icon instance swap"
   invalid_combinations:
-    - when: { variant: [secondary, tertiary, neutral, hyperlink, underlined], size: [xs, sm, lg] }
-      reason: "only primary supports xs, sm, lg — all other variants are md only"
+    - when: { variant: neutral, size: lg }
+      reason: "neutral variant has no lg in the component set"
 
 execution_order:
   - choose_variant
