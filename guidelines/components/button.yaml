@@ -1,0 +1,157 @@
+schema_version: 1.0
+
+component: Button
+component_type: action
+status: stable
+
+figma:
+  file_key: IyriPXG0e0FkwH6iBgMtTm
+  component_set_node: "32:46"
+  import_method: component_instance
+
+available_combinations:
+  primary:    [xs, sm, md, lg]
+  secondary:  [md]
+  tertiary:   [md]
+  neutral:    [md]
+  hyperlink:  [md]
+  underlined: [md]
+
+variants:
+  - node_id: "5639:38292"
+    props: { variant: primary, size: xs }
+  - node_id: "444:5332"
+    props: { variant: primary, size: sm }
+  - node_id: "444:5478"
+    props: { variant: primary, size: md }
+  - node_id: "444:5722"
+    props: { variant: primary, size: lg }
+  - node_id: "444:5526"
+    props: { variant: secondary, size: md }
+  - node_id: "444:5674"
+    props: { variant: tertiary, size: md }
+  - node_id: "17382:27443"
+    props: { variant: neutral, size: md }
+  - node_id: "5328:26577"
+    props: { variant: hyperlink, size: md }
+  - node_id: TBD
+    props: { variant: underlined, size: md }
+
+props:
+  semantic:
+    variant: [primary, secondary, tertiary, neutral, hyperlink, underlined]
+    size: [xs, sm, md, lg]
+    state: [default, hovered, pressed, disabled]
+
+  figma:
+    - name: variant
+      type: enum
+      values: [primary, secondary, tertiary, neutral, hyperlink, underlined]
+
+    - name: size
+      type: enum
+      values: [xs, sm, md, lg]
+
+    - name: isOnBackground
+      type: string_boolean       # NOT a real boolean — pass as quoted string
+      values: ["False", "True"]
+
+    - name: isDisabled
+      type: string_boolean       # NOT a real boolean — pass as quoted string
+      values: ["false", "true"]
+
+    - name: isHovered
+      type: boolean
+      values: [true, false]
+
+    - name: isPressed
+      type: boolean
+      values: [true, false]
+
+    - name: isSplit
+      type: boolean
+      values: [true, false]
+
+    - name: hasLeadingIcon
+      type: boolean
+      values: [true, false]
+
+    - name: hasTrailingIcon
+      type: boolean
+      values: [true, false]
+
+    - name: hasLabel                  # absent on primary variant
+      type: boolean
+      values: [true, false]
+      applies_to: [secondary, tertiary, neutral, hyperlink, underlined]
+
+overrides:
+  text:
+    - layer_name: Label
+      required_when: hasLabel=true
+
+  instance_swap:
+    - layer_name: L icon
+      accepts: Icon
+      required_when: hasLeadingIcon=true
+    - layer_name: T icon
+      accepts: Icon
+      required_when: hasTrailingIcon=true
+
+  visibility:
+    - layer_name: Trailing separator
+      controlled_by: isSplit
+
+decision_tree:
+  variant:
+    - { condition: "primary CTA, one per screen/section", use: primary }
+    - { condition: "supporting action alongside primary", use: secondary }
+    - { condition: "low-emphasis ghost action, bordered", use: tertiary }
+    - { condition: "achromatic action, no brand colour", use: neutral }
+    - { condition: "inline text link, no underline", use: hyperlink }
+    - { condition: "inline text link with underline", use: underlined }
+
+  size:
+    - { condition: "default UI, most surfaces", use: md }
+    - { condition: "compact or dense layout", use: sm }
+    - { condition: "hero CTA, landing page", use: lg }
+    - { condition: "tight space, tag or pill context", use: xs }
+
+composition:
+  parent_rules:
+    - do not place inside List Cell — use List Cell's built-in action slots instead
+    - avoid size lg inside cards, modals, or list surfaces
+  child_rules:
+    - icon instances in L icon / T icon must match size context — 16px for xs/sm/md, 24px for lg
+  spacing:
+    sibling_gap_px: 8
+  rules:
+    - one primary per screen section — never two primaries side by side
+    - standard two-action pairing is primary + secondary
+    - hyperlink and underlined are inline — do not place in button rows
+  see_also: [fab]
+
+layout:
+  default_width: hug
+  allowed_width_modes: [hug, fill]
+  default_height: hug
+  responsive_rules:
+    - "full-width on mobile: set width mode to fill on the instance"
+
+validation:
+  required_props: [variant, size]
+  required_overrides:
+    - when: "hasLeadingIcon=true"
+      override: "L icon instance swap"
+    - when: "hasTrailingIcon=true"
+      override: "T icon instance swap"
+  invalid_combinations:
+    - when: { variant: [secondary, tertiary, neutral, hyperlink, underlined], size: [xs, sm, lg] }
+      reason: "only primary supports xs, sm, lg — all other variants are md only"
+
+execution_order:
+  - choose_variant
+  - create_instance
+  - set_props
+  - apply_overrides
+  - validate
